@@ -12,3 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
+
+# customization
+/.idea/encodings.xml
+/.idea/vcs.xml
