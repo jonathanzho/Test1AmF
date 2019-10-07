@@ -14,7 +14,7 @@
         android:text="Fragment B" />
 
     <Button
-        android:id="@+id/buttonGotoFragmentB"
+        android:id="@+id/buttonGotoFragmentA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Go to Fragment A" />

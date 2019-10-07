@@ -4,12 +4,15 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -78,6 +81,21 @@ public class FragmentA extends Fragment {
 
     // Inflate the layout for this fragment
     return inflater.inflate(R.layout.fragment_a, container, false);
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    Log.d(TAG, "onViewCreated");
+
+    super.onViewCreated(view, savedInstanceState);
+
+    Button buttonGoToFragmentB = (Button) getView().findViewById(R.id.buttonGotoFragmentB);
+    buttonGoToFragmentB.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        ((MainActivity)getActivity()).displayFragmentB();
+      }
+    });
   }
 
   // TODO: Rename method, update argument and hook method into UI event

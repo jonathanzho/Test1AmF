@@ -7,8 +7,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements FragmentA.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity
+    implements FragmentA.OnFragmentInteractionListener,
+    FragmentB.OnFragmentInteractionListener {
   private static final String TAG = "Test1AmF MainAcxtivity";
 
   private Fragment fragmentA;
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
     super.onPause();
   }
 
-  private void displayFragmentA() {
+  public void displayFragmentA() {
     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
     if (fragmentA.isAdded()) {
       ft.show(fragmentA);
@@ -59,6 +62,19 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
     }
     if (fragmentB.isAdded()) {
       ft.hide(fragmentB);
+    }
+    ft.commit();
+  }
+
+  public void displayFragmentB() {
+    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+    if (fragmentB.isAdded()) {
+      ft.show(fragmentB);
+    } else {
+      ft.add(R.id.fragment_holder, fragmentB, "B");
+    }
+    if (fragmentA.isAdded()) {
+      ft.hide(fragmentA);
     }
     ft.commit();
   }
